@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Square from './Square';
 
-const Board = () => {
-    return <div className = "board">
-        <div className="board-row">
+const Board = () => { 
+   const {squares, setSquares} = useState(Array(9).fill(null));
+   return {
+    <div className = "board">
+        <div className= "board-row">
             <Square value = {0}/>
             <Square value = {1}/>
             <Square value = {2}/>
@@ -19,6 +22,7 @@ const Board = () => {
         </div>
         
         
-         </div>;
+         </div>
+   };
 };
 export default Board;

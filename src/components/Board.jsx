@@ -3,15 +3,20 @@ import Square from './Square';
 
 const Board = () => { 
    const [squares, setSquares] = useState(Array(9).fill(null));
-   const handleSquareClick = (clickedposition) => {
+   const [isNext , setIsNext] = userState(false);
+      const handleSquareClick = (clickedposition) => {
+         if (squares[clickedposition]) {
+            return;
+         }
       setSquares ((currentSquares) => {
          return currentSquares.map((squareValue, position) => {
            if (clickedposition === position) {
-            return "X";
+            return isNext ? 'X' : '0' ;
            }
            return squareValue;
          });
       });
+      setIsNext((currentIsNext) => !currentIsNext);
    };
    const renderSquare = position => {
       return (
